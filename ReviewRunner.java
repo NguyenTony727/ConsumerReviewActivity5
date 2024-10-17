@@ -1,11 +1,21 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class ReviewRunner {
   public static void main(String[] args) 
   {
-    /* your code here, for example: */
-    /* String sentence = "This was a terrible restaurant The pizza crust was too chewy and I disliked the pasta I would definitely not come back"; */
-    System.out.println(Review.totalSentiment("SimpleReview.txt"));
-    System.out.println(Review.totalSentiment("26WestReview.txt"));
-    System.out.println(Review.starRating("26WestReview.txt"));
-    System.out.println(Review.starRating("SimpleReview.txt"));
+    List<String> reviewFiles = new ArrayList<>();
+    reviewFiles.add("Reviews/taroReviews.txt");
+    reviewFiles.add("Reviews/matchaReviews.txt");
+    for (int i = 0; i < reviewFiles.size(); i++) {
+      for (int j = i + 1; j < reviewFiles.size(); j++) {
+        String file1 = reviewFiles.get(i);
+        String file2 = reviewFiles.get(j);
+        String comparisonMessage = "Comparing: ".concat(file1).concat(" and ").concat(file2);
+        // String starComparisonMsg = "Review 1's star rating: " + int.textToString(Review.starRating(file1)) + "\nReview 2's star rating: " + textToString(Review.starRating(file2));  
+        System.out.println(comparisonMessage);
+        Review.compareReviews(file1, file2);
+      } 
+    }
   }
 }

@@ -142,22 +142,22 @@ public static int starRating(String fileName)
   {
     double totalSentiment = totalSentiment(fileName);
     
-    if (totalSentiment >35) {
+    if (totalSentiment >15) {
       return 5;
     }
-    else if (totalSentiment > 25)
+    else if (totalSentiment > 5)
     {
       return 4;
     }
-      else if(totalSentiment > 15)
+      else if(totalSentiment > 0)
     {
     return 3;
     }
-      else if(totalSentiment > 5)
+      else if(totalSentiment > -10)
     {
     return 2;
     }
-      else if(totalSentiment < 0)
+      else if(totalSentiment < -15)
     {
       return 1;
     }
@@ -186,6 +186,22 @@ public static int starRating(String fileName)
     
   }
   
+  public static void compareReviews(String review1, String review2)
+  {
+    double score1 = totalSentiment(review1);
+    double score2 = totalSentiment(review2);  
+    int starRating1 = starRating(review1);
+    int starRating2 = starRating(review2);
+
+    if (score1>score2 && starRating1 != 0 && starRating2 != 0) {
+      System.out.println("Review 1 is more positive than Review 2.");
+    } else if (score2 > score1) {
+      System.out.println("Review 2 is more positve than Review 2.");
+    } else {
+      System.out.println("Both reviews are have the same sentiment");
+    }
+
+  }
   /** 
    * Randomly picks a positive or negative adjective and returns it.
    */
